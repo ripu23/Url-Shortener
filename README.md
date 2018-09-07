@@ -6,7 +6,7 @@ I have used 64-bit encoding technique to shorten the URLs.
 # Getting started
 
 1. Import/Clone the git repository using  `https://github.com/ripu23/Url-Shortener.git`
-2. Install [mongodb](https://www.mongodb.com/download-center)
+2. Install [mongoDB](https://www.mongodb.com/download-center)
 3. Install [NodeJS](https://nodejs.org/en/download/)
 4. Start mongoDB by typing`mongod` on the terminal.
 5. Open the terminal on the folder you have cloned this repository.
