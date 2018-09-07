@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "body-parser": "^1.18.3",
+    "btoa": "^1.2.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.9"
+  }
+}
