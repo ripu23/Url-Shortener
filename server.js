@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyparser = require('body-parser');
+var cors = require('cors');
 var btoa = require('btoa');
 var atob = require('atob');
 var app = express();
@@ -16,21 +17,23 @@ mongoose.connect(dbUri, {
     useNewUrlParser: true,
 });
 
-
 mongoose.connection.on('connected', function () {
     console.log('Connected');
     counter.deleteMany({}, function (err) {
-        if(err)return console.log(err);
+        if (err) return console.log(err);
         console.log('API: Counter Schema --> Deleted all entries');
     });
     URL.deleteMany({}, function (err) {
-        if(err) console.log(err);
+        if (err) console.log(err);
         console.log('API: URL Schema --> Deleted all entries');
     });
-    
-    var count_object = new counter({_id: 'url_count', count: 100000});
-    count_object.save(count_object, function(err){
-        if(err) console.log(err);
+
+    var count_object = new counter({
+        _id: 'url_count',
+        count: 100000
+    });
+    count_object.save(count_object, function (err) {
+        if (err) console.log(err);
         console.log('API : Counter Schema --> inserted the first count object');
     })
 });
@@ -42,6 +45,7 @@ mongoose.connection.on('error', function () {
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyparser.json());
+app.use(cors());
 
 const port = process.env.port || 3000;
 
@@ -66,31 +70,40 @@ app.post('/shorten', function (req, res) {
             shortenUrl.save(function (err, doc) {
                 if (err) {
                     console.log('here' + err);
-                    
+
                 }
-                res.json({doc: doc, host: util.host});
+                res.json({
+                    doc: doc,
+                    host: util.host
+                });
             });
         } else {
             console.log("API: found a matching doc");
-            res.json({doc: doc, host: util.host});
+            res.json({
+                doc: doc,
+                host: util.host
+            });
         }
     });
-
+    4
 });
 
 app.get('/hash:id', function (req, res) {
     var param_id = req.params.id;
-    console.log('API: ' + 'hash:id' + id + 'check');
-    var decryted = util.decrypt(param_id);
+    
     URL.findOne({
-        s: param_id
-    }, function (err, doc) {
-        //res.redirect(doc);
+        shortenUrl: param_id.substring(1)
+    }, function (err, docs) {
 
         if (err) {
-            console.log('error');
+            console.log('API: --> error');
         }
-        console.log('API: ' + doc);
+
+        
+        res.status(200).json({
+            docs: docs
+        })
+
     });
 });
 
@@ -101,7 +114,10 @@ app.get('/findAll', function (req, res) {
             console.log(err);
             return console.error(err);
         }
-        res.status(200).json({doc : doc, host: util.host});
+        res.status(200).json({
+            doc: doc,
+            host: util.host
+        });
     });
 });
 

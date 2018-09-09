@@ -18,6 +18,7 @@ app.controller('MainController', function ($scope, $http) {
         
         $http.get('/hash:' + hash).then(function (response) {
             console.log(response);
+            window.open(response.data.docs.url, "_blank");
         }, function (err) {
             console.log(err);
         });

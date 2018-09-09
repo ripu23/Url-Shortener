@@ -55,11 +55,11 @@ var encrypt = function(id){
 }
 
 var decrypt = function(shortened){
-    var 
-    while(str){
-        var index = id.indexOf(shortened[0]);
-        
-    }
+//    var 
+//    while(str){
+//        var index = id.indexOf(shortened[0]);
+//        
+//    }
 }
 
 module.exports = {

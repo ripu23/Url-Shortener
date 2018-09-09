@@ -33,7 +33,7 @@ urlschema.pre('save', function(next){
         
     })
     
-})
+});
 
 module.exports = {
     URL : URL,
