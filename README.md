@@ -13,4 +13,4 @@ I have used 64-bit encoding technique to shorten the URLs.
 6. Open the terminal in the folder you have cloned this repository.
 7. Type `npm install` -- this will install the dependencies. 
 8. Start the node server by typing `node server` or if you have nodemon installed type `nodemon server.js`.
-and you are go to go, the application is up and running on `127.0.0.1:3000`. 3000 is the default port, you can configure it by editing the server.js file.
+and you are good to go, the application is up and running on `127.0.0.1:3000`. 3000 is the default port, you can configure it by editing the server.js file.
